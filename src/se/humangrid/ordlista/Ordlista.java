@@ -5,11 +5,20 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.Vector;
 
+/**
+* Add word lists to texts att specified points.
+* To be used in e.g. language text books.
+*/
 
 public class Ordlista {
-
 	
-	private Vector<String> getText(String fileName) {
+	/**
+	 * Gives a vector cointaning all the unique words in the text
+	 * specified as fileName
+	 * @param fileName 
+	 * @return
+	 */
+	private Vector<String> getWords(String fileName) {
 		Vector<String> wordsInFile = new Vector<String>();
 		try {
 			Scanner in = new Scanner(new File(fileName));
@@ -28,10 +37,16 @@ public class Ordlista {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return wordsInFile;
 	}
 
+	/**
+	 * Removes all the special characters in a String.
+	 * If the string contains a special character in the middle
+	 * it removes it and everything after
+	 * @param s
+	 * @return
+	 */
 	private String removeSpecials(String s) {
 		s = s.toLowerCase();
 		if (s.matches("\\W\\w+.*")) {
@@ -41,6 +56,12 @@ public class Ordlista {
 		return s;
 	}
 	
+	/**
+	 * Writers all the words in the vector given as a parameter 
+	 * to the file specified as a parameter.
+	 * @param wordsInFile
+	 * @param fileName
+	 */
 	private void writeToFile(Vector<String> wordsInFile, String fileName) {
 		try {
 			PrintWriter writer = new PrintWriter(fileName);
@@ -54,9 +75,17 @@ public class Ordlista {
 		}		
 		
 	}
+	
+	/**
+	 * Empty constructor for the class
+	 */
 	public Ordlista() {
 	}
 
+	/**
+	 * Mainclass mainly for testing.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Ordlista o = new Ordlista();
 		if (args.length > 3)
