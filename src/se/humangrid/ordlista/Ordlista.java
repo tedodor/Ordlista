@@ -18,10 +18,10 @@ public class Ordlista {
 	 * @param fileName 
 	 * @return
 	 */
-	private Vector<String> getWords(String fileName) {
+	private Vector<String> getWords(File file) {
 		Vector<String> wordsInFile = new Vector<String>();
 		try {
-			Scanner in = new Scanner(new File(fileName));
+			Scanner in = new Scanner(file);
 			while (in.hasNextLine()) {
 				String line = in.nextLine();
 				String[] s = line.split("\\s");
@@ -62,7 +62,7 @@ public class Ordlista {
 	 * @param wordsInFile
 	 * @param fileName
 	 */
-	private void writeToFile(Vector<String> wordsInFile, String fileName) {
+	private void writeToFile(Vector<String> wordsInFile, File fileName) {
 		try {
 			PrintWriter writer = new PrintWriter(fileName);
 			for (String word : wordsInFile) {
@@ -88,11 +88,27 @@ public class Ordlista {
 	 */
 	public static void main(String[] args) {
 		Ordlista o = new Ordlista();
-		if (args.length > 3)
-			o.writeToFile(o.getText(args[1]), args[2]);
-		else
-			o.writeToFile(o.getText("/Users/teodor/Documents/workspace/Ordlista/resources/text.txt"), "/Users/teodor/Documents/workspace/Ordlista/resources/ordlista.txt");
+		File inputFile = null;
+		File outputFile = null;
+		if (args.length == 0){
+			inputFile = new File("text.txt");
+			outputFile = new File("output.txt");
+		} else if (args.length == 1) {
+			inputFile = new File(args[0]);
+			outputFile = new File("output.txt");
+		} else if (args.length == 2) {
+			inputFile = new File(args[0]);
+			outputFile = new File(args[1]);			
+		}
+		o.writeToFile(o.getWords(inputFile), outputFile);			
 
+		
+			/*
+			o.writeToFile(
+					o.getWords(
+							new File(
+									(o.getClass().getResource("/text.txt")).getPath())), new File(o.getClass().getResource("/ordlista.txt").getFile()));
+*/
 	}
 }
 	
