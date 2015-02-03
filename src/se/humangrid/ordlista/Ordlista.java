@@ -9,7 +9,7 @@ import java.util.Vector;
 public class Ordlista {
 
 	
-		private Vector<String> getText(String fileName) {
+	private Vector<String> getText(String fileName) {
 		Vector<String> wordsInFile = new Vector<String>();
 		try {
 			Scanner in = new Scanner(new File(fileName));
