@@ -9,4 +9,4 @@ Run it with the following command:
 
        $ java -jar Ordlista.jar inputfile.txt outputfile.txt
 
-Leave the latter empty to print to stdout.
+Leave the output file empty to print to stdout.
