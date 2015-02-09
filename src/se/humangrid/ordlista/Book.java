@@ -31,7 +31,10 @@ public class Book {
 	 */
 	private String getNext() {
 		if (in.hasNext()) {
-			return in.nextLine();
+		    String nextLine = in.nextLine();
+		    if (!nextLine.contains(chapterKeyWord)) {
+			return nextLine;
+		    }
 		}
 		return null;
 	}
@@ -45,7 +48,7 @@ public class Book {
 			newChapter = new Chapter(null);			
 		}	
 		String nextLine = getNext();
-		while (nextLine != null && !nextLine.contains("CHAPTER")) {
+		while (nextLine != null) {
 			newChapter.add(nextLine);
 			nextLine = getNext();
 		}
@@ -54,9 +57,9 @@ public class Book {
 	
 	
 	public void makeWordList() {
-		while (getNext() != null) {
-			addChapter();
-		}
+	    while (in.hasNext()) {
+		addChapter();
+	    }
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
