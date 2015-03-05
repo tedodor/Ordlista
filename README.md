@@ -1,12 +1,13 @@
 # Ordlista
 
-Create glossay for a text. Currently this program inputs a glossary after every occurrence of the word "Chapter". The glossary will contain all the words introduced in that chapter.
+This program is meant to help you write language text books.
 
+Currently it check for missing words in character list and word list of a docx file, and for redundant words in either list.
 
 Download the executable jar here: [Ordlista.jar](http://humangrid.se/Ordlista.jar)
 
 Run it with the following command: 
 
-       $ java -jar Ordlista.jar inputfile.txt outputfile.txt
+       $ java -jar Ordlista.jar inputfile.docx
 
-Leave the output file empty to print to stdout.
+The output will be printed to stdout.

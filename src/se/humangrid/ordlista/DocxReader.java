@@ -35,7 +35,6 @@ public class DocxReader {
 	
 	public void getString(String fileName) throws IOException, SAXException, ParserConfigurationException {
 	    ZipFile zipFile = new ZipFile(fileName);
-
 	    Enumeration<? extends ZipEntry> entries = zipFile.entries();
         Scanner in = null;
         Document doc = null;
@@ -123,9 +122,5 @@ public class DocxReader {
 
 	public Vector<String> getCharacters() {
 		return characters;
-	}
-
-	public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
-		System.out.println("done");
 	}
 }

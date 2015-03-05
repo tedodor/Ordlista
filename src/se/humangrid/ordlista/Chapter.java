@@ -200,7 +200,11 @@ public class Chapter {
 	
 	
 	public static void main(String[] args) throws FileNotFoundException {
-		Parser p = new Parser("/Users/teodor/Documents/text/kinesiska.docx");
+		if (args.length != 1) {
+			System.out.println("Usage: java -jar Ordlista.jar [inputfile.docx]");
+			return;
+		}
+		Parser p = new Parser(args[0]);
 		Chapter c = new Chapter();
 		c.setCharacter(p.getCharacters());
 		c.setWords(p.getWords());
