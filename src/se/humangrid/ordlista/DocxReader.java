@@ -85,14 +85,16 @@ public class DocxReader {
 	public void addText(Node node, Vector<String> v) {
 		Node wrNode = node.getFirstChild().getNextSibling();
 		Element e = (Element) wrNode;
+		String m = "";
 		while (e.getTagName().equals("w:r")) {
 			String s = e.getTextContent();
-			v.add(s);
+			m+=s;
 			if (wrNode.getNextSibling() == null)
 				break;
 			wrNode = wrNode.getNextSibling();
 			e = (Element) wrNode;
 		}
+		v.add(m);
 	}
 	
 	public Vector<String> parseXML(Scanner in) {
